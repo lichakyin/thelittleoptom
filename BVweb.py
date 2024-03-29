@@ -18,7 +18,7 @@ if page == 'Myopia report':
     st.markdown('---')
 
 
-    df= pd.read_csv(r'/Users/chakyinli/Desktop/refraction data.csv')
+    df= pd.read_csv('refraction data.csv')
 
 
     def convert_to_datatime(df):
