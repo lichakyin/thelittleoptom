@@ -10,77 +10,17 @@ st.set_page_config(page_title='Binocular Vision', page_icon=':bar_chart:', layou
 
 # Define the sidebar navigation
 st.sidebar.title('Navigation')
-page = st.sidebar.selectbox('Go to', ('Myopia report', 'W4dot', 'Hart Chart', 'Accommodation Facility Training'))
+page = st.sidebar.selectbox('Go to', ('Home Page', 'W4dot', 'Hart Chart', 'Accommodation Facility Training', 'Red Blue Circular Pong', 'Red Blue Space Asteroids'))
 
 # Render the selected page
-if page == 'Myopia report':
-    st.title('Myopia report  :eyeglasses:')
+if page == 'Home Page':
+    st.title('Welcome to thelittleoptom Binocular Vision website!!	:sparkles:')
     st.markdown('---')
+    st.write('This website offers a complimentary repository for binocular vision. By utilizing simple tools, optometrists can provide the optimal binocular vision trainings to their patients, ensuring the utmost level of care.:clap::clap::clap::clap:')
+    st.write('Using the sidebar as a convenient navigation tool, you can explore "Binocular Testing" and "Binocular Training"! The website will provide updates in the future. Enjoy your journey!:angel:')
+    st.caption('Created by Charles Li')
+    st.image('littleoptom.png')
 
-
-    df= pd.read_csv('refraction data.csv')
-
-
-    def convert_to_datatime(df):
-        df['Date']='01-'+df['Date']
-        df['Date']=pd.to_datetime(df['Date'],format='%d-%b-%y')
-        return df
-
-
-    convert_to_datatime(df)
-
-
-    st.dataframe(df)
-
-
-    st.sidebar.header('Please select what you wanna see here:')
-    items= st.sidebar.multiselect('Select: ', options=['Myopia', 'Cylinder', 'Axial length'])
-
-
-
-
-
-
-    date_of_treatment=df['Date'].unique()
-
-
-
-
-
-
-    yes_no= st.selectbox('Are you using any myopia control?', options=['No', 'Yes'])
-    date_chose= st.selectbox('When do you start myopia control treatment?', options=date_of_treatment)
-
-
-    fig = go.Figure()
-# Line graph visualization
-    if 'Myopia' in items:
-        fig.add_trace(go.Scatter(x=df['Date'], y=df['Myopia'], mode='lines+markers', name='Myopia', line=dict(color='red')))
-        if yes_no=='Yes':
-            date_chose = pd.to_datetime(date_chose)
-            fig.add_vline(x=date_chose, line_width=1, line_dash='dash', line_color='white')
-            fig.add_annotation(x=date_chose, y=0, text='Myopia control use', showarrow=False)
-  
-  
-
-
-    if 'Axial length' in items:
-        fig.add_trace(go.Scatter(x=df['Date'], y=df['axial length'], mode='lines+markers', name='Axial length',line=dict(color='blue')))
-        if yes_no=='Yes':
-            date_chose = pd.to_datetime(date_chose)
-            fig.add_vline(x=date_chose, line_width=2, line_dash='dash', line_color='white')
-            fig.add_annotation(x=date_chose, y=0, text='Myopia control use', showarrow=False)
-  
-  
-    if 'Cylinder' in items:
-        fig.add_trace(go.Scatter(x=df['Date'], y=df['cylinder'], mode='lines+markers', name='cylinder',line=dict(color='green')))
-        if yes_no=='Yes':
-            date_chose = pd.to_datetime(date_chose)
-            fig.add_vline(x=date_chose, line_width=1, line_dash='dash', line_color='white')
-            fig.add_annotation(x=date_chose, y=0, text='Myopia control use', showarrow=False)
-  
-    fig.update_layout(title='Rx and AL Over Time', xaxis_title='Date', yaxis_title='Measurement')
-    st.plotly_chart(fig)
 
 if page == 'W4dot':
     st.title('Worth 4 dot')
@@ -256,3 +196,25 @@ if page == 'Accommodation Facility Training':
     button=st.button('Switch!')
     if button:
         st.session_state.boolean= not st.session_state.boolean
+
+if page == 'Red Blue Circular Pong':
+    st.title('Red Blue Circular Pong')
+    st.write('Antisuppression Pursuit Training')
+    # Add content specific to the Home page
+
+    st.markdown('---')
+
+    st.caption('Please wear your red-green goggles. You may adjust the red/blue color saturation so that you can only see one color by one eye')
+    st.caption('https://gd.games/games/cb9c2cfb-5116-440e-b27d-afbbac7d1c34')
+    st.image('Circularpong.png')
+
+if page == 'Red Blue Space Asteroids':
+    st.title('Red Blue Space Asteroids')
+    st.write('Antisuppression Training')
+    # Add content specific to the Home page
+
+    st.markdown('---')
+
+    st.caption('Please wear your red-green goggles. You may adjust the red/blue color saturation so that you can only see one color by one eye')
+    st.caption('https://gd.games/games/f5c08170-30d1-4018-813d-d4ad6960eac4')
+    st.image('Spaceasteroids.png')
