@@ -10,7 +10,7 @@ st.set_page_config(page_title='Binocular Vision', page_icon=':bar_chart:', layou
 
 # Define the sidebar navigation
 st.sidebar.title('Navigation')
-page = st.sidebar.selectbox('Go to', ('Home Page', 'W4dot', 'Hart Chart', 'Accommodation Facility Training', 'Red Blue Circular Pong', 'Red Blue Space Asteroids'))
+page = st.sidebar.selectbox('Go to', ('Home Page', 'W4dot', 'Hart Chart', 'Accommodation Facility Training', 'Red Blue Circular Pong', 'Red Blue Space Asteroids', 'Visual Discrimination Training'))
 
 # Render the selected page
 if page == 'Home Page':
@@ -218,3 +218,17 @@ if page == 'Red Blue Space Asteroids':
     st.caption('Please wear your red-green goggles. You may adjust the red/blue color saturation so that you can only see one color by one eye')
     st.caption('https://gd.games/games/f5c08170-30d1-4018-813d-d4ad6960eac4')
     st.image('Spaceasteroids.png')
+
+if page == 'Visual Discrimination Training':
+    st.title('Visual Discrimination Training')
+    st.write('This exercise aims at improving the visuo-spatial and visual discrimination skills')
+    # Add content specific to the Home page
+
+    st.markdown('---')
+
+    st.caption('Click the link to play. There are 3 levels')
+    st.caption('https://gd.games/games/2be9c5f5-3a00-4ae3-b38e-6763a9db8925')
+    st.image('DISCOVER.png')
+    st.image('easy.png')
+    st.image('medium.png')
+    st.image('hard.png')
