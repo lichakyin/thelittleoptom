@@ -57,7 +57,7 @@ if page== 'Myopia Control Calculator: Axial Length':
     # Calculate control rate as a percentage change
         control_rate = ((change_before - change_after) / change_before) * 100 if change_before != 0 else 0
     
-    st.subheader(f"Control Rate: {control_rate:.2f}%")
+    st.subheader(f"Control Rate: {control_rate}")
 
     #st.write(f"Change in Axial Length Before Myopia Control: {change_before} mm, in {days_1_to_2} days ")
     #st.write(f"Change in Axial Length After Myopia Control: {change_after} mm, in {days_2_to_3} days")
