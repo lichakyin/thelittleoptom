@@ -10,17 +10,59 @@ st.set_page_config(page_title='Binocular Vision', page_icon=':bar_chart:', layou
 
 # Define the sidebar navigation
 st.sidebar.title('Navigation')
-page = st.sidebar.selectbox('Go to', ('Home Page', 'W4dot', 'Hart Chart', 'Accommodation Facility Training', 'Red Blue Circular Pong', 'Red Blue Space Asteroids', 'Visual Discrimination Training'))
+page = st.sidebar.selectbox('Go to', ('Home Page', 'Myopia Control Calculator: Axial Length', 'W4dot', 'Hart Chart', 'Accommodation Facility Training', 'Red Blue Circular Pong', 'Red Blue Space Asteroids', 'Visual Discrimination Training'))
 
 # Render the selected page
 if page == 'Home Page':
-    st.title('Welcome to thelittleoptom Binocular Vision website!!	:sparkles:')
+    st.title('Welcome to thelittleoptom Optometry website!!	:sparkles:')
     st.markdown('---')
-    st.write('This website offers a complimentary repository for binocular vision. By utilizing simple tools, optometrists can provide the optimal binocular vision trainings to their patients, ensuring the utmost level of care.:clap::clap::clap::clap:')
-    st.write('Using the sidebar as a convenient navigation tool, you can explore "Binocular Testing" and "Binocular Training"! The website will provide updates in the future. Enjoy your journey!:angel:')
-    st.caption('Created by Charles Li')
+    st.write('This website offers a complimentary repository for optometrists.:clap::clap::clap::clap:')
+    st.write('Using the sidebar as a convenient navigation tool!:angel:')
+    st.caption('Created by Charles Li, FAAO')
     st.image('littleoptom.png')
 
+if page== 'Myopia Control Calculator: Axial Length':
+    st.subheader("Myopia Control Calculator: Axial Length")
+
+# Create two columns for inputs
+    col1, col2 = st.columns(2)
+    st.markdown('')
+    st.markdown('')
+    with col1:
+        st.text('Before Myopia Control')
+        st.markdown('')
+        date_1 = st.date_input("Date of 1st Visit:")
+        axial_length_1 = st.number_input("1st Axial Length (in mm):", min_value=0.0)
+
+        st.markdown('')
+        date_2 = st.date_input("Date of 2nd Visit (Myopia Control Start):")
+        axial_length_2 = st.number_input("2nd Axial Length (in mm):", min_value=0.0)
+
+    with col2:
+        st.text('After Myopia Control')
+        st.markdown('')
+        date_3 = st.date_input("Date of 3rd Visit:")
+        axial_length_3 = st.number_input("3rd Axial Length (in mm):", min_value=0.0)
+
+    if date_1 and date_2 and date_3:
+        days_1_to_2 = (date_2 - date_1).days
+        days_2_to_3 = (date_3 - date_2).days
+
+# Calculate the rate of change if all lengths are provided
+    if axial_length_1 and axial_length_2 and axial_length_3:
+    # Calculate the change before and after myopia control
+        change_before = (axial_length_2 - axial_length_1)/ days_1_to_2
+        change_after = (axial_length_3 - axial_length_2)/ days_2_to_3
+    
+    # Calculate control rate as a percentage change
+        control_rate = ((change_before - change_after) / change_before) * 100 if change_before != 0 else 0
+
+
+    #st.write(f"Change in Axial Length Before Myopia Control: {change_before} mm, in {days_1_to_2} days ")
+    #st.write(f"Change in Axial Length After Myopia Control: {change_after} mm, in {days_2_to_3} days")
+    #st.write(f"Control Rate: {control_rate:.2f}%")
+
+    st.markdown(f"<h2 style='color: Yellow;'>Control Rate:  {control_rate:.2f}% </h2>", unsafe_allow_html=True)
 
 if page == 'W4dot':
     st.title('Worth 4 dot')
