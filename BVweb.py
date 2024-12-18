@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 import pandas as pd
 import re
 
-st.set_page_config(page_title='Binocular Vision', page_icon=':bar_chart:', layout='centered')
+st.set_page_config(page_title='The LittleOptom', page_icon=':bar_chart:', layout='centered')
 
 # Define the sidebar navigation
 st.sidebar.title('Navigation')
@@ -58,7 +58,7 @@ if page== 'Myopia Control Calculator: Axial Length':
         control_rate = ((change_before - change_after) / change_before) * 100 if change_before != 0 else 0
     
     # Display the control rate simply
-    st.write(f"Control Rate: {control_rate:.2f}%")
+    st.write(f"Control Rate: {control_rate}")
 
     #st.write(f"Change in Axial Length Before Myopia Control: {change_before} mm, in {days_1_to_2} days ")
     #st.write(f"Change in Axial Length After Myopia Control: {change_after} mm, in {days_2_to_3} days")
